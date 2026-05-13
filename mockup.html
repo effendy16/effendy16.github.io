@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/>
+<title>Mockup Redesign — WalletMe</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#E8EDF5;display:flex;justify-content:center;gap:24px;padding:32px 16px;flex-wrap:wrap;align-items:flex-start;}
+
+  /* ── PHONE SHELL ── */
+  .phone{width:375px;background:#F2F4F7;border-radius:44px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,0.22),0 0 0 1px rgba(0,0,0,0.08);position:relative;}
+  .phone-label{text-align:center;margin-bottom:12px;font-size:13px;font-weight:700;color:#64748B;letter-spacing:1px;text-transform:uppercase;}
+  .screen{overflow:hidden;border-radius:44px;}
+
+  /* ── SHARED ── */
+  .card{background:#fff;border-radius:18px;padding:16px;margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,0.06),0 4px 16px rgba(0,0,0,0.04);}
+  .card-dark{background:#1E2535;border-radius:18px;padding:16px;margin-bottom:10px;}
+  .tx-row{display:flex;align-items:center;gap:12px;padding:10px 0;}
+  .tx-row+.tx-row{border-top:1px solid #F2F4F7;}
+  .cat-icon{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+  .badge{padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;}
+
+  /* ── BEFORE DESIGN ── */
+  .before-header{background:#fff;padding:16px 16px 12px;display:flex;justify-content:space-between;align-items:center;}
+  .before-balance{background:#fff;margin:0 12px 10px;border-radius:16px;padding:16px;box-shadow:0 1px 4px rgba(0,0,0,0.08);}
+
+  /* ── AFTER HERO ── */
+  .hero{background:linear-gradient(160deg,#1A56DB 0%,#0E9F6E 100%);padding:0;position:relative;overflow:hidden;}
+  .hero::before{content:"";position:absolute;top:-60px;right:-40px;width:200px;height:200px;background:rgba(255,255,255,0.06);border-radius:50%;}
+  .hero::after{content:"";position:absolute;bottom:-30px;left:-20px;width:140px;height:140px;background:rgba(255,255,255,0.05);border-radius:50%;}
+  .hero-content{position:relative;z-index:1;padding:20px 20px 28px;}
+  .hero-cards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 20px 0;position:relative;z-index:1;}
+  .hero-card{background:rgba(255,255,255,0.14);backdrop-filter:blur(12px);border-radius:14px;padding:12px;border:1px solid rgba(255,255,255,0.2);}
+
+  /* ── NAV ── */
+  .nav{background:rgba(250,251,255,0.96);backdrop-filter:blur(24px);border-top:0.5px solid rgba(0,0,0,0.06);padding:10px 4px 28px;display:flex;align-items:center;}
+  .nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:none;cursor:pointer;}
+  .nav-pill{width:40px;height:26px;display:flex;align-items:center;justify-content:center;border-radius:14px;}
+  .nav-pill.active{background:#EBF3FF;}
+  .nav-fab{width:52px;height:52px;border-radius:16px;background:linear-gradient(145deg,#1A73E8,#0D9D58);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(26,115,232,0.38);margin-top:-14px;}
+
+  /* ── DARK NAV ── */
+  .nav-dark{background:rgba(10,14,26,0.94);border-top:0.5px solid rgba(255,255,255,0.08);}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════
+     SEBELUM  (desain lama)
+════════════════════════════════════ -->
+<div>
+  <div class="phone-label">😐 Sebelum — Kurang Profesional</div>
+  <div class="phone">
+    <div class="screen">
+
+      <!-- Header lama: 3 baris rame -->
+      <div class="before-header">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#1565C0,#0D9D58);display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;font-weight:700;flex-shrink:0;">E</div>
+          <div>
+            <div style="font-size:12px;color:#94A3B8;font-weight:500;">Selamat pagi ☀️</div>
+            <div style="font-size:14px;font-weight:700;color:#0F172A;line-height:1.2;">Effendy 🌟</div>
+            <div style="font-size:10px;color:#94A3B8;margin-top:4px;">Selasa, 13 Mei 2026</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;">
+          <div style="width:34px;height:34px;border-radius:50%;background:#F2F4F7;display:flex;align-items:center;justify-content:center;font-size:16px;">🌙</div>
+          <div style="width:34px;height:34px;border-radius:50%;background:#F2F4F7;display:flex;align-items:center;justify-content:center;font-size:16px;">⚙️</div>
+        </div>
+      </div>
+
+      <!-- Balance card biasa -->
+      <div style="padding:0 12px 0;">
+        <div class="before-balance">
+          <div style="font-size:11px;color:#94A3B8;margin-bottom:4px;">Saldo Bersih Bulan Ini</div>
+          <div style="font-size:22px;font-weight:800;color:#0F172A;">Rp 3.245.000</div>
+          <div style="display:flex;gap:16px;margin-top:10px;">
+            <div>
+              <div style="font-size:10px;color:#94A3B8;">↑ Pemasukan</div>
+              <div style="font-size:13px;font-weight:700;color:#0F9D58;">Rp 5.200.000</div>
+            </div>
+            <div>
+              <div style="font-size:10px;color:#94A3B8;">↓ Pengeluaran</div>
+              <div style="font-size:13px;font-weight:700;color:#D93025;">Rp 1.955.000</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cards biasa -->
+      <div style="padding:0 12px;">
+        <!-- Hari ini card -->
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div style="width:32px;height:32px;border-radius:10px;background:#EBF3FF;display:flex;align-items:center;justify-content:center;font-size:15px;">📅</div>
+              <div style="font-size:12px;font-weight:700;color:#0F172A;">Hari Ini</div>
+            </div>
+            <div style="font-size:10px;color:#94A3B8;">Sel, 13 Mei</div>
+          </div>
+          <div style="display:flex;gap:12px;">
+            <div style="flex:1;text-align:center;background:#F2F4F7;border-radius:10px;padding:8px 4px;">
+              <div style="font-size:10px;color:#94A3B8;">Masuk</div>
+              <div style="font-size:14px;font-weight:800;color:#0F9D58;">Rp 0</div>
+            </div>
+            <div style="flex:1;text-align:center;background:#F2F4F7;border-radius:10px;padding:8px 4px;">
+              <div style="font-size:10px;color:#94A3B8;">Keluar</div>
+              <div style="font-size:14px;font-weight:800;color:#D93025;">Rp 87k</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Transaksi card biasa -->
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;margin-bottom:10px;">
+            <div style="font-size:12px;font-weight:700;color:#0F172A;">Transaksi Terakhir</div>
+            <div style="font-size:11px;color:#1A73E8;font-weight:600;">Lihat semua</div>
+          </div>
+          <!-- tx row — warna kategori neon -->
+          <div class="tx-row">
+            <div class="cat-icon" style="background:#F9731620;">🍔</div>
+            <div style="flex:1;"><div style="font-size:13px;font-weight:600;color:#0F172A;">Makan & Minum</div><div style="font-size:11px;color:#94A3B8;">Hari ini</div></div>
+            <div style="font-size:13px;font-weight:700;color:#D93025;">-Rp 35k</div>
+          </div>
+          <div class="tx-row">
+            <div class="cat-icon" style="background:#EC489920;">🛍</div>
+            <div style="flex:1;"><div style="font-size:13px;font-weight:600;color:#0F172A;">Belanja</div><div style="font-size:11px;color:#94A3B8;">Kemarin</div></div>
+            <div style="font-size:13px;font-weight:700;color:#D93025;">-Rp 120k</div>
+          </div>
+          <div class="tx-row">
+            <div class="cat-icon" style="background:#10B98120;">💰</div>
+            <div style="flex:1;"><div style="font-size:13px;font-weight:600;color:#0F172A;">Gaji</div><div style="font-size:11px;color:#94A3B8;">1 Mei</div></div>
+            <div style="font-size:13px;font-weight:700;color:#0F9D58;">+Rp 5,2jt</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nav lama -->
+      <div class="nav">
+        <button class="nav-btn">
+          <div class="nav-pill active"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A73E8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          <span style="font-size:10px;font-weight:700;color:#1A73E8;">Beranda</span>
+        </button>
+        <button class="nav-btn">
+          <div class="nav-pill"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+          <span style="font-size:10px;color:#94A3B8;">Riwayat</span>
+        </button>
+        <button class="nav-btn">
+          <div class="nav-fab"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          <span style="font-size:10px;color:#94A3B8;margin-top:4px;">Tambah</span>
+        </button>
+        <button class="nav-btn">
+          <div class="nav-pill"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="1.8" stroke-linecap="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></div>
+          <span style="font-size:10px;color:#94A3B8;">Laporan</span>
+        </button>
+        <button class="nav-btn">
+          <div class="nav-pill"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <span style="font-size:10px;color:#94A3B8;">Budget</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════
+     SESUDAH  — LIGHT MODE
+════════════════════════════════════ -->
+<div>
+  <div class="phone-label">✨ Sesudah — Profesional (Light)</div>
+  <div class="phone">
+    <div class="screen">
+
+      <!-- HERO GRADIENT -->
+      <div class="hero">
+        <div class="hero-content">
+          <!-- Header bersih 2 baris -->
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+            <div style="display:flex;align-items:center;gap:10px;cursor:pointer;">
+              <div style="width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,0.2);backdrop-filter:blur(8px);border:1.5px solid rgba(255,255,255,0.3);display:flex;align-items:center;justify-content:center;font-size:17px;color:#fff;font-weight:700;flex-shrink:0;">E</div>
+              <div>
+                <div style="font-size:15px;font-weight:700;color:#fff;line-height:1.2;">Effendy</div>
+                <div style="font-size:11px;color:rgba(255,255,255,0.7);margin-top:1px;">☀️ Pagi · Sel, 13 Mei</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:6px;">
+              <div style="width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:15px;">🌙</div>
+              <div style="width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:15px;">⚙️</div>
+            </div>
+          </div>
+
+          <!-- Balance utama — besar & prominent -->
+          <div style="text-align:center;">
+            <div style="font-size:12px;color:rgba(255,255,255,0.65);font-weight:500;letter-spacing:0.5px;margin-bottom:6px;">SALDO BERSIH · MEI 2026</div>
+            <div style="font-size:36px;font-weight:900;color:#fff;letter-spacing:-1px;line-height:1;">Rp 3.245.000</div>
+            <div style="margin-top:8px;display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.12);border-radius:20px;padding:4px 12px;">
+              <div style="width:6px;height:6px;border-radius:50%;background:#4ADE80;"></div>
+              <span style="font-size:11px;color:rgba(255,255,255,0.85);font-weight:500;">Lebih hemat Rp 200k dari bulan lalu</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Income / Expense pills -->
+        <div class="hero-cards">
+          <div class="hero-card">
+            <div style="font-size:10px;color:rgba(255,255,255,0.6);margin-bottom:4px;font-weight:500;">↑ PEMASUKAN</div>
+            <div style="font-size:17px;font-weight:800;color:#fff;">Rp 5,2jt</div>
+          </div>
+          <div class="hero-card">
+            <div style="font-size:10px;color:rgba(255,255,255,0.6);margin-bottom:4px;font-weight:500;">↓ PENGELUARAN</div>
+            <div style="font-size:17px;font-weight:800;color:#fff;">Rp 1,9jt</div>
+          </div>
+        </div>
+
+        <!-- Curved bottom edge -->
+        <div style="height:20px;background:#F2F4F7;border-radius:24px 24px 0 0;margin-top:16px;"></div>
+      </div>
+
+      <!-- Cards area -->
+      <div style="padding:0 14px;margin-top:-4px;">
+
+        <!-- Hari Ini card — refined -->
+        <div class="card" style="margin-bottom:10px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div style="width:36px;height:36px;border-radius:10px;background:rgba(26,115,232,0.1);display:flex;align-items:center;justify-content:center;">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1A73E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2.5"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10" stroke-width="1.5"/></svg>
+              </div>
+              <div style="font-size:13px;font-weight:700;color:#0F172A;">Hari Ini</div>
+            </div>
+            <div style="font-size:10px;color:#94A3B8;">Sel, 13 Mei</div>
+          </div>
+          <div style="display:flex;gap:10px;">
+            <div style="flex:1;background:#F0FDF4;border-radius:12px;padding:10px 12px;">
+              <div style="font-size:10px;color:#16A34A;font-weight:600;margin-bottom:2px;">↑ Masuk</div>
+              <div style="font-size:15px;font-weight:800;color:#16A34A;">Rp 0</div>
+            </div>
+            <div style="flex:1;background:#FFF1F2;border-radius:12px;padding:10px 12px;">
+              <div style="font-size:10px;color:#E11D48;font-weight:600;margin-bottom:2px;">↓ Keluar</div>
+              <div style="font-size:15px;font-weight:800;color:#E11D48;">Rp 87k</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Transaksi terakhir — warna profesional -->
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+            <div style="font-size:13px;font-weight:700;color:#0F172A;">Transaksi Terakhir</div>
+            <div style="font-size:11px;color:#1A73E8;font-weight:600;">Lihat semua ›</div>
+          </div>
+          <!-- warna muted profesional -->
+          <div class="tx-row">
+            <div class="cat-icon" style="background:#E07B3918;">🍔</div>
+            <div style="flex:1;"><div style="font-size:13px;font-weight:600;color:#0F172A;">Makan & Minum</div><div style="font-size:11px;color:#94A3B8;">Hari ini · Dompet BCA</div></div>
+            <div style="font-size:13px;font-weight:700;color:#D93025;">-Rp 35k</div>
+          </div>
+          <div class="tx-row">
+            <div class="cat-icon" style="background:#C2476E18;">🛍</div>
+            <div style="flex:1;"><div style="font-size:13px;font-weight:600;color:#0F172A;">Belanja</div><div style="font-size:11px;color:#94A3B8;">Kemarin · GoPay</div></div>
+            <div style="font-size:13px;font-weight:700;color:#D93025;">-Rp 120k</div>
+          </div>
+          <div class="tx-row">
+            <div class="cat-icon" style="background:#1A9E7018;">💰</div>
+            <div style="flex:1;"><div style="font-size:13px;font-weight:600;color:#0F172A;">Gaji</div><div style="font-size:11px;color:#94A3B8;">1 Mei · BCA</div></div>
+            <div style="font-size:13px;font-weight:700;color:#0F9D58;">+Rp 5,2jt</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Nav bersih -->
+      <div class="nav">
+        <button class="nav-btn">
+          <div class="nav-pill active"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A73E8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          <span style="font-size:10px;font-weight:700;color:#1A73E8;">Beranda</span>
+        </button>
+        <button class="nav-btn">
+          <div class="nav-pill"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+          <span style="font-size:10px;color:#94A3B8;">Riwayat</span>
+        </button>
+        <button class="nav-btn" style="padding:0;">
+          <div class="nav-fab"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          <span style="font-size:10px;color:#94A3B8;margin-top:4px;">Tambah</span>
+        </button>
+        <button class="nav-btn">
+          <div class="nav-pill"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="1.8" stroke-linecap="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></div>
+          <span style="font-size:10px;color:#94A3B8;">Laporan</span>
+        </button>
+        <button class="nav-btn">
+          <div class="nav-pill"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <span style="font-size:10px;color:#94A3B8;">Budget</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════
+     SESUDAH  — DARK MODE
+════════════════════════════════════ -->
+<div>
+  <div class="phone-label">🌙 Sesudah — Profesional (Dark)</div>
+  <div class="phone" style="background:#0F172A;">
+    <div class="screen" style="background:#0F172A;">
+
+      <!-- HERO dark -->
+      <div style="background:linear-gradient(160deg,#1E3A8A 0%,#065F46 100%);position:relative;overflow:hidden;">
+        <div style="position:absolute;top:-60px;right:-40px;width:200px;height:200px;background:rgba(255,255,255,0.04);border-radius:50%;"></div>
+        <div style="position:relative;z-index:1;padding:20px 20px 28px;">
+          <!-- Header dark -->
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <div style="width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,0.15);border:1.5px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:17px;color:#fff;font-weight:700;">E</div>
+              <div>
+                <div style="font-size:15px;font-weight:700;color:#fff;line-height:1.2;">Effendy</div>
+                <div style="font-size:11px;color:rgba(255,255,255,0.6);margin-top:1px;">🌙 Malam · Sel, 13 Mei</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:6px;">
+              <div style="width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:15px;">☀️</div>
+              <div style="width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:15px;">⚙️</div>
+            </div>
+          </div>
+          <!-- Balance -->
+          <div style="text-align:center;">
+            <div style="font-size:12px;color:rgba(255,255,255,0.5);font-weight:500;letter-spacing:0.5px;margin-bottom:6px;">SALDO BERSIH · MEI 2026</div>
+            <div style="font-size:36px;font-weight:900;color:#fff;letter-spacing:-1px;line-height:1;">Rp 3.245.000</div>
+            <div style="margin-top:8px;display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.1);border-radius:20px;padding:4px 12px;">
+              <div style="width:6px;height:6px;border-radius:50%;background:#4ADE80;"></div>
+              <span style="font-size:11px;color:rgba(255,255,255,0.7);font-weight:500;">Lebih hemat Rp 200k dari bulan lalu</span>
+            </div>
+          </div>
+        </div>
+        <!-- Pill cards dark -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 20px;position:relative;z-index:1;">
+          <div style="background:rgba(255,255,255,0.1);backdrop-filter:blur(12px);border-radius:14px;padding:12px;border:1px solid rgba(255,255,255,0.15);">
+            <div style="font-size:10px;color:rgba(255,255,255,0.5);margin-bottom:4px;font-weight:500;">↑ PEMASUKAN</div>
+            <div style="font-size:17px;font-weight:800;color:#fff;">Rp 5,2jt</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.1);backdrop-filter:blur(12px);border-radius:14px;padding:12px;border:1px solid rgba(255,255,255,0.15);">
+            <div style="font-size:10px;color:rgba(255,255,255,0.5);margin-bottom:4px;font-weight:500;">↓ PENGELUARAN</div>
+            <div style="font-size:17px;font-weight:800;color:#fff;">Rp 1,9jt</div>
+          </div>
+        </div>
+        <div style="height:20px;background:#0F172A;border-radius:24px 24px 0 0;margin-top:16px;"></div>
+      </div>
+
+      <!-- Dark cards -->
+      <div style="padding:0 14px;margin-top:-4px;">
+        <!-- Hari ini dark -->
+        <div style="background:#1E2535;border-radius:18px;padding:16px;margin-bottom:10px;box-shadow:0 2px 12px rgba(0,0,0,0.3);">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div style="width:36px;height:36px;border-radius:10px;background:rgba(26,115,232,0.2);display:flex;align-items:center;justify-content:center;">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2.5"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10" stroke-width="1.5"/></svg>
+              </div>
+              <div style="font-size:13px;font-weight:700;color:#F1F5F9;">Hari Ini</div>
+            </div>
+            <div style="font-size:10px;color:#475569;">Sel, 13 Mei</div>
+          </div>
+          <div style="display:flex;gap:10px;">
+            <div style="flex:1;background:rgba(16,185,129,0.12);border-radius:12px;padding:10px 12px;">
+              <div style="font-size:10px;color:#34D399;font-weight:600;margin-bottom:2px;">↑ Masuk</div>
+              <div style="font-size:15px;font-weight:800;color:#34D399;">Rp 0</div>
+            </div>
+            <div style="flex:1;background:rgba(239,68,68,0.12);border-radius:12px;padding:10px 12px;">
+              <div style="font-size:10px;color:#F87171;font-weight:600;margin-bottom:2px;">↓ Keluar</div>
+              <div style="font-size:15px;font-weight:800;color:#F87171;">Rp 87k</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Transaksi dark -->
+        <div style="background:#1E2535;border-radius:18px;padding:16px;box-shadow:0 2px 12px rgba(0,0,0,0.3);">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+            <div style="font-size:13px;font-weight:700;color:#F1F5F9;">Transaksi Terakhir</div>
+            <div style="font-size:11px;color:#60A5FA;font-weight:600;">Lihat semua ›</div>
+          </div>
+          <div class="tx-row" style="border-color:#2D3748;">
+            <div class="cat-icon" style="background:#E07B3920;">🍔</div>
+            <div style="flex:1;"><div style="font-size:13px;font-weight:600;color:#F1F5F9;">Makan & Minum</div><div style="font-size:11px;color:#64748B;">Hari ini · BCA</div></div>
+            <div style="font-size:13px;font-weight:700;color:#F87171;">-Rp 35k</div>
+          </div>
+          <div class="tx-row" style="border-color:#2D3748;">
+            <div class="cat-icon" style="background:#C2476E20;">🛍</div>
+            <div style="flex:1;"><div style="font-size:13px;font-weight:600;color:#F1F5F9;">Belanja</div><div style="font-size:11px;color:#64748B;">Kemarin · GoPay</div></div>
+            <div style="font-size:13px;font-weight:700;color:#F87171;">-Rp 120k</div>
+          </div>
+          <div class="tx-row" style="border-color:#2D3748;">
+            <div class="cat-icon" style="background:#1A9E7020;">💰</div>
+            <div style="flex:1;"><div style="font-size:13px;font-weight:600;color:#F1F5F9;">Gaji</div><div style="font-size:11px;color:#64748B;">1 Mei · BCA</div></div>
+            <div style="font-size:13px;font-weight:700;color:#34D399;">+Rp 5,2jt</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nav dark -->
+      <div class="nav nav-dark" style="margin-top:16px;">
+        <button class="nav-btn">
+          <div class="nav-pill" style="background:#1E3A8A;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          <span style="font-size:10px;font-weight:700;color:#60A5FA;">Beranda</span>
+        </button>
+        <button class="nav-btn">
+          <div class="nav-pill"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+          <span style="font-size:10px;color:#475569;">Riwayat</span>
+        </button>
+        <button class="nav-btn" style="padding:0;">
+          <div class="nav-fab"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+          <span style="font-size:10px;color:#475569;margin-top:4px;">Tambah</span>
+        </button>
+        <button class="nav-btn">
+          <div class="nav-pill"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="1.8" stroke-linecap="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></div>
+          <span style="font-size:10px;color:#475569;">Laporan</span>
+        </button>
+        <button class="nav-btn">
+          <div class="nav-pill"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <span style="font-size:10px;color:#475569;">Budget</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ════════ COLOR PALETTE ════════ -->
+<div style="width:100%;max-width:860px;margin:0 auto;">
+  <div class="phone-label" style="margin-bottom:16px;">🎨 Perbandingan Warna Kategori</div>
+  <div style="background:#fff;border-radius:20px;padding:20px;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+
+      <!-- Lama -->
+      <div>
+        <div style="font-size:12px;font-weight:700;color:#64748B;margin-bottom:10px;letter-spacing:1px;">WARNA LAMA — Neon</div>
+        ${["#F97316","#3B82F6","#EC4899","#EAB308","#8B5CF6","#10B981","#06B6D4"].map((c,i)=>{
+          const names=["🍔 Makan & Minum","🚗 Transport","🛍 Belanja","💡 Tagihan","🎬 Hiburan","💊 Kesehatan","📚 Pendidikan"];
+          return `<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><div style="width:36px;height:36px;border-radius:10px;background:${c}20;display:flex;align-items:center;justify-content:center;font-size:16px;">${names[i][0]}</div><div style="flex:1;"><div style="font-size:12px;font-weight:600;color:#0F172A;">${names[i].slice(3)}</div></div><div style="width:28px;height:28px;border-radius:8px;background:${c};"></div></div>`;
+        }).join("")}
+      </div>
+
+      <!-- Baru -->
+      <div>
+        <div style="font-size:12px;font-weight:700;color:#64748B;margin-bottom:10px;letter-spacing:1px;">WARNA BARU — Profesional</div>
+        ${["#E07B39","#2D6BE4","#C2476E","#C98A0A","#7140D4","#1A9E70","#1294B8"].map((c,i)=>{
+          const names=["🍔 Makan & Minum","🚗 Transport","🛍 Belanja","💡 Tagihan","🎬 Hiburan","💊 Kesehatan","📚 Pendidikan"];
+          return `<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;"><div style="width:36px;height:36px;border-radius:10px;background:${c}20;display:flex;align-items:center;justify-content:center;font-size:16px;">${names[i][0]}</div><div style="flex:1;"><div style="font-size:12px;font-weight:600;color:#0F172A;">${names[i].slice(3)}</div></div><div style="width:28px;height:28px;border-radius:8px;background:${c};"></div></div>`;
+        }).join("")}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ RINGKASAN PERUBAHAN ════════ -->
+<div style="width:100%;max-width:860px;margin:0 auto;">
+  <div style="background:#fff;border-radius:20px;padding:24px;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
+    <div style="font-size:15px;font-weight:800;color:#0F172A;margin-bottom:16px;">📋 Ringkasan Perubahan</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
+      <div style="background:#F0FDF4;border-radius:14px;padding:14px;border:1px solid #BBF7D0;">
+        <div style="font-size:12px;font-weight:700;color:#16A34A;margin-bottom:6px;">✅ Hero Section</div>
+        <div style="font-size:11px;color:#166534;line-height:1.6;">Gradient biru→hijau. Balance ditampilkan besar & prominent di tengah. Income/expense dalam glass-card kecil.</div>
+      </div>
+      <div style="background:#F0FDF4;border-radius:14px;padding:14px;border:1px solid #BBF7D0;">
+        <div style="font-size:12px;font-weight:700;color:#16A34A;margin-bottom:6px;">✅ Header Bersih</div>
+        <div style="font-size:11px;color:#166534;line-height:1.6;">3 baris → 2 baris. Nama jadi utama. Greeting + tanggal digabung 1 baris kecil. Avatar kotak rounded.</div>
+      </div>
+      <div style="background:#F0FDF4;border-radius:14px;padding:14px;border:1px solid #BBF7D0;">
+        <div style="font-size:12px;font-weight:700;color:#16A34A;margin-bottom:6px;">✅ Warna Kategori</div>
+        <div style="font-size:11px;color:#166534;line-height:1.6;">Neon Tailwind → muted profesional. Saturation diturunkan. Tetap bisa dibedakan tapi tidak mencolok.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
